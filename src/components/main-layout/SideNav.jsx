@@ -5,7 +5,7 @@ import Delete from "../../assets/delete_forever.svg";
 
 const SideNav = ({ isOpen, toggleSideNav }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [productsDetails, setProductsDetails] = useState([]);
+  const [productsInCartArray, setProductsInCartArray] = useState([]);
   const [subTotal, setSubTotal] = useState(0);
   const [vat, setVat] = useState(0);
 
@@ -13,34 +13,45 @@ const SideNav = ({ isOpen, toggleSideNav }) => {
   useEffect(() => {
     // Update the state when the isOpen prop changes
     setIsSideNavOpen(isOpen);
+    // console.log("Updated products in cart:", productsInCartArray);
   }, [isOpen]);
 
   useEffect(() => {
-    if (productsDetails.length > 0) {
-      getProductsInCart();
-    }
-  }, [productsDetails]);
+    getProductsInCart();
+  }, []);
 
-  const removeProductFromCart = (product) => {
-    const indexToRemove = productsDetails.findIndex(
-      (obj) => obj.id === product.id
-    );
+  let storedArray = localStorage.getItem("cartArray");
+  storedArray = JSON.parse(storedArray) || [];
+  console.log(storedArray);
 
-    if (indexToRemove !== -1) {
-      productsDetails[indexToRemove].isDisabled = false;
-      productsDetails.splice(indexToRemove, 1);
-      setProductsDetails([...productsDetails]); // Ensure to create a new array reference
-    }
-  };
+  // useEffect(() => {
+  //   let storedArray = localStorage.getItem("cartArray");
+  //   storedArray = JSON.parse(storedArray);
+
+  //   setProductsInCartArray(storedArray);
+  //   console.log("gets here =========>", productsInCartArray);
 
   const getProductsInCart = async () => {
     setIsLoading(true);
 
+    const priceTotal = productsInCartArray.map((product) => product.price);
+    const calculatedSubTotal = priceTotal.reduce(
+      (sum, price) => sum + price,
+      0
+    );
+    setSubTotal(calculatedSubTotal);
+
+    const calculatedVat = calculatedSubTotal / 1000;
+    setVat(calculatedVat);
+
+    console.log(
+      "get products in cart vat =>",
+      calculatedSubTotal,
+      calculatedVat
+    );
+    // }, [productsInCartArray]);
     try {
-      const res = await axios.get(`https://fakestoreapi.com/products`);
-      const priceTotal = res.data.map((product) => product.price);
-      setSubTotal(priceTotal.reduce((sum, price) => sum + price, 0));
-      setVat(subTotal / 1000);
+      setProductsInCartArray(storedArray);
     } catch (error) {
       console.log("get products in cart error =>", error);
       throw error;
@@ -49,9 +60,19 @@ const SideNav = ({ isOpen, toggleSideNav }) => {
     }
   };
 
-  useEffect(() => {
-    getProductsInCart();
-  });
+  const removeProductFromCart = (productId) => {
+    console.log("trying to remove ===-=-", productId);
+    // Remove the product with the given productId from the array
+    const updatedArray = storedArray.filter(
+      (product) => product.id !== productId.id
+    );
+
+    // Update the state with the new array
+    setProductsInCartArray(updatedArray);
+
+    // Update localStorage with the new array
+    localStorage.setItem("cartArray", JSON.stringify(updatedArray));
+  };
 
   return (
     <div>
@@ -78,8 +99,8 @@ const SideNav = ({ isOpen, toggleSideNav }) => {
             </div>
           </div>
           <div>
-            {productsDetails.length > 0 ? (
-              productsDetails.map((item) => (
+            {storedArray.length > 0 ? (
+              storedArray.map((item) => (
                 <div
                   key={item.id}
                   className="px-4 bg-white overflow-hidden w-full"
@@ -113,7 +134,7 @@ const SideNav = ({ isOpen, toggleSideNav }) => {
                           className="mr-4 cursor-pointer disabled:text-gray-300"
                           disabled={item.quantity === 1}
                           onClick={() => {
-                            item.quantity = item.quantity - 1;
+                            item.quantity--;
                           }}
                         >
                           -
@@ -123,7 +144,7 @@ const SideNav = ({ isOpen, toggleSideNav }) => {
                           className="ml-4 cursor-pointer disabled:text-gray-300"
                           disabled={item.quantity === 10}
                           onClick={() => {
-                            item.quantity = item.quantity + 1;
+                            item.quantity++;
                           }}
                         >
                           +
