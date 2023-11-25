@@ -29,7 +29,8 @@ const ProductCard = ({ products }) => {
 
   useEffect(() => {
     console.log("Updated products in cart:", productsInCartArray);
-  }, []);
+    localStorage.setItem("cartArray", JSON.stringify(productsInCartArray));
+  }, [productsInCartArray]);
 
   const addToCart = async (product) => {
     product.isDisabled = true;
@@ -39,12 +40,6 @@ const ProductCard = ({ products }) => {
     setIsLoading(true);
 
     try {
-      // Assuming you have modified the addToCart function in the CartContext
-      // addToCart({
-      //   productId: product.id,
-      //   quantity: 1,
-      // });
-
       setProductsInCartArray([...productsInCartArray, product]);
       console.log("products in cart=>", productsInCartArray);
 
