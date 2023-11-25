@@ -17,6 +17,7 @@ const Toast = Swal.mixin({
 const ProductCard = ({ products }) => {
   const navigate = useNavigate();
   const [productsInCartArray, setProductsInCartArray] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [isLoading, setIsLoading] = useState(false);
   const addToCartDate = new Date().toLocaleString();
 

@@ -17,6 +17,7 @@ const TopNav = ({ toggleSideNav }) => {
   const navigate = useNavigate();
   const [showOtherNavLinks, setShowOtherNavLinks] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [isLoading, setIsLoading] = useState(false);
   // const [isSideNavOpen, setIsSideNavOpen] = useState(false);
   const [showMobileSearchField, setShowMobileSearchField] = useState(false);
@@ -73,6 +74,7 @@ const TopNav = ({ toggleSideNav }) => {
   };
 
   // Function to toggle mobile search field
+  // eslint-disable-next-line no-unused-vars
   const toggleMobileSearchField = () => {
     setShowMobileSearchField(!showMobileSearchField);
   };
