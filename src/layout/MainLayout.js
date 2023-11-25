@@ -33,11 +33,11 @@ function MainLayout() {
                     className="fixed top-0 w-full z-50"
                 />
                 {/* Main Content */}
-                <main className="w-screen h-full px-4 md:px-10">
+                <main className=" h-full px-4 md:px-10">
                     <Outlet />
                 </main>
                 {/* Footer */}
-                <FooterView className="w-screen" />
+                <FooterView className="" />
             </div>
             {/* Side Nav slides out */}
             <div>

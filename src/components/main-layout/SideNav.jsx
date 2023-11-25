@@ -19,7 +19,8 @@ const SideNav = ({ isOpen, toggleSideNav }) => {
 
   useEffect(() => {
     getProductsInCart();
-  });
+    // eslint-disable-next-line no-unused-vars
+  }, []);
 
   let storedArray = localStorage.getItem("cartArray");
   storedArray = JSON.parse(storedArray) || [];
