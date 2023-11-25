@@ -21,10 +21,15 @@ const MainCarousel = ({ slides }) => {
 
   return (
     <div className="relative h-full">
+      <div
+        className="w-full z-1 relative h-full bg-cover bg-center"
+        style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
+      ></div>
+      <div className="absolute z-1 inset-0 bg-neutral/25"></div>
       <div className="absolute w-full top-1/2 transform -translate-y-1/2">
         <div
           onClick={goToPrevious}
-          className="absolute left-4 text-4xl text-white cursor-pointer"
+          className="absolute z-99 left-0 text-4xl text-white cursor-pointer"
         >
           <svg
             width="32"
@@ -41,7 +46,7 @@ const MainCarousel = ({ slides }) => {
         </div>
         <div
           onClick={goToNext}
-          className="absolute right-0 text-4xl text-white cursor-pointer"
+          className="absolute z-99 right-0 text-4xl text-white cursor-pointer"
         >
           <svg
             width="32"
@@ -57,20 +62,24 @@ const MainCarousel = ({ slides }) => {
           </svg>
         </div>
       </div>
-      <div
-        className="w-full relative h-full bg-cover bg-center"
-        style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-      ></div>
-      <div className="absolute z-1 hidden inset-0 bg-neutral/25"></div>
-      <div className="flex justify-center">
+      <div className="flex justify-center carousel-indicators">
         {slides.map((slide, slideIndex) => (
           <div
             key={slideIndex}
             onClick={() => goToSlide(slideIndex)}
-            className={`mx-3 cursor-pointer text-2xl carousel-indicator-item ${
+            className={`carousel-indicator-item ${
               currentIndex === slideIndex ? "active" : ""
             }`}
-          ></div>
+          >
+            {/* <div class="carousel-indicators">
+              <button
+                key={slideIndex}
+                className={`carousel-indicator-item ${
+                  currentIndex === slideIndex ? "active" : ""
+                }`}
+              ></button>
+            </div> */}
+          </div>
         ))}
       </div>
     </div>

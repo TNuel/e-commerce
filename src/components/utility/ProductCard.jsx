@@ -58,7 +58,7 @@ const ProductCard = ({ products }) => {
   };
 
   return (
-    <div className="w-screen grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-10 gap-5 lg:gap-10">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-10 gap-5 lg:gap-10">
       {products.map((product) => (
         <div
           key={product?.id}
@@ -92,7 +92,6 @@ const ProductCard = ({ products }) => {
                   fill="none"
                 >
                   <path
-                    stroke
                     d="M10.5166 17.3418C10.2333 17.4418 9.76663 17.4418 9.48329 17.3418C7.06663 16.5168 1.66663 13.0752 1.66663 7.24183C1.66663 4.66683 3.74163 2.5835 6.29996 2.5835C7.81663 2.5835 9.15829 3.31683 9.99996 4.45016C10.8416 3.31683 12.1916 2.5835 13.7 2.5835C16.2583 2.5835 18.3333 4.66683 18.3333 7.24183C18.3333 13.0752 12.9333 16.5168 10.5166 17.3418Z"
                     strokeWidth={`${product.isFavorite ? "0" : "1.5"}`}
                     strokeLinecap="round"
