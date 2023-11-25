@@ -10,6 +10,7 @@ import NoMatch from "./pages/NoMatch";
 import { useState } from "react";
 
 function App() {
+  // eslint-disable-next-line no-unused-vars
   const [open, setOpen] = useState(false)
   return (
     <div className="App">

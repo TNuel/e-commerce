@@ -9,9 +9,12 @@ const ProductDetails = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [productDetails, setProductDetails] = useState({});
   const [productQuantity, setProductQuantity] = useState(1);
+  // eslint-disable-next-line no-unused-vars
   const [disableLowerCount, setDisableLowerCount] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [disableUpperCount, setDisableUpperCount] = useState(false);
   const [productQuantityUpperLimit, setProductQuantityUpperLimit] = useState(0);
+  // eslint-disable-next-line no-unused-vars
   const [productQuantityLowerLimit, setProductQuantityLowerLimit] = useState(1);
   const [addToCartDate] = useState(new Date().toLocaleString());
 

@@ -1,9 +1,10 @@
-import axios from "axios";
+// import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Clear from "../../assets/clear.svg";
 import Delete from "../../assets/delete_forever.svg";
 
 const SideNav = ({ isOpen, toggleSideNav }) => {
+  // eslint-disable-next-line no-unused-vars
   const [isLoading, setIsLoading] = useState(false);
   const [productsInCartArray, setProductsInCartArray] = useState([]);
   const [subTotal, setSubTotal] = useState(0);
@@ -18,7 +19,7 @@ const SideNav = ({ isOpen, toggleSideNav }) => {
 
   useEffect(() => {
     getProductsInCart();
-  }, []);
+  });
 
   let storedArray = localStorage.getItem("cartArray");
   storedArray = JSON.parse(storedArray) || [];

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const TabsView = ({ getProductsByCategory }) => {
+  // eslint-disable-next-line no-unused-vars
   const [isLoading, setIsLoading] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [categories, setCategories] = useState([]);
@@ -42,12 +43,12 @@ const TabsView = ({ getProductsByCategory }) => {
   const updateScreenSize = () => {
     setIsMobile(window.innerWidth <= 640);
   };
-
+// eslint-disable-next-line no-unused-vars
   const changeCategory = (event) => {
     const currentCategory = event.target.value;
     setActiveTab(currentCategory);
   };
-
+// eslint-disable-next-line no-unused-vars
   const changeTab = (index, currentCategory) => {
     setActiveTab(currentCategory);
   };
