@@ -35,30 +35,30 @@ const ProductCard = ({ products }) => {
     product.isDisabled = true;
     console.log("get here =====");
     console.log("get here =====", product);
-    // console.log(addToCartDate);
-    // setIsLoading(true);
+    console.log(addToCartDate);
+    setIsLoading(true);
 
-    // try {
-    //   // Assuming you have modified the addToCart function in the CartContext
-    //   // addToCart({
-    //   //   productId: product.id,
-    //   //   quantity: 1,
-    //   // });
+    try {
+      // Assuming you have modified the addToCart function in the CartContext
+      // addToCart({
+      //   productId: product.id,
+      //   quantity: 1,
+      // });
 
-    //   setProductsInCartArray([...productsInCartArray, product]);
-    //   console.log("products in cart=>", productsInCartArray);
+      setProductsInCartArray([...productsInCartArray, product]);
+      console.log("products in cart=>", productsInCartArray);
 
-    //   Toast.fire({
-    //     icon: "success",
-    //     title: "Product added to cart successfully",
-    //   });
-    // } catch (error) {
-    //   console.log("add to cart error =>", error);
-    //   product.isDisabled = false;
-    //   // Handle the error appropriately
-    // } finally {
-    //   setIsLoading(false);
-    // }
+      Toast.fire({
+        icon: "success",
+        title: "Product added to cart successfully",
+      });
+    } catch (error) {
+      console.log("add to cart error =>", error);
+      product.isDisabled = false;
+      // Handle the error appropriately
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
