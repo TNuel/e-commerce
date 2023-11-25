@@ -8,6 +8,7 @@ const LandingPage = ({ open }) => {
   // const productStore = useProductStore();
   console.log(open);
   const [isLoading, setIsLoading] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [productCategories, setProductCategories] = useState([
     "All Categories",
     "Electronic",
