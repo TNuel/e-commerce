@@ -19,7 +19,7 @@ const SideNav = ({ isOpen, toggleSideNav }) => {
 
   useEffect(() => {
     getProductsInCart();
-    // eslint-disable-next-line no-unused-vars
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   let storedArray = localStorage.getItem("cartArray");
@@ -43,7 +43,7 @@ const SideNav = ({ isOpen, toggleSideNav }) => {
     );
     setSubTotal(calculatedSubTotal);
 
-    const calculatedVat = calculatedSubTotal / 1000;
+    const calculatedVat = calculatedSubTotal / 100;
     setVat(calculatedVat);
 
     console.log(
