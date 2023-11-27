@@ -27,11 +27,13 @@ function MainLayout() {
     return (
         <div className="">
             <div>
-                <TopNav
-                    isOpen={isSideNavOpen}
-                    toggleSideNav={toggleSideNav}
-                    className="fixed top-0 w-full z-50"
-                />
+                <div className="fixed top-0 w-full z-50">
+                    <TopNav
+                        isOpen={isSideNavOpen}
+                        toggleSideNav={toggleSideNav}
+
+                    />
+                </div>
                 {/* Main Content */}
                 <main className=" h-full px-4 md:px-10">
                     <Outlet />
