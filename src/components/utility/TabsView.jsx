@@ -43,14 +43,18 @@ const TabsView = ({ getProductsByCategory }) => {
   const updateScreenSize = () => {
     setIsMobile(window.innerWidth <= 640);
   };
-// eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line no-unused-vars
   const changeCategory = (event) => {
     const currentCategory = event.target.value;
+    console.log("get here for current category =>", currentCategory);
     setActiveTab(currentCategory);
+    getProductsByCategory(currentCategory);
   };
-// eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line no-unused-vars
   const changeTab = (index, currentCategory) => {
+    console.log("get here for current category =>", currentCategory);
     setActiveTab(currentCategory);
+    getProductsByCategory(currentCategory);
   };
 
   return (
@@ -64,7 +68,7 @@ const TabsView = ({ getProductsByCategory }) => {
         {categories.map((category, index) => (
           <div
             key={index}
-            onClick={() => getProductsByCategory(category)}
+            onClick={() => changeTab(index, category)}
             className={`cursor-pointer px-4 hover:px-6 py-2 hover:text-white capitalize hover:bg-textPrimary rounded-lg transition duration-300 text-sm text-left lg:text-base font-semibold inline-flex tracking-tight text-textSecondary leading-none ${
               activeTab === category ? "bg-secondary text-white" : ""
             }`}
@@ -77,7 +81,7 @@ const TabsView = ({ getProductsByCategory }) => {
       {/* Dropdown select for mobile screens */}
       <div className={`${isMobile ? "" : "hidden"}`}>
         <select
-          onChange={() => getProductsByCategory(activeTab)}
+          onChange={changeCategory}
           value={activeTab}
           className="block w-full p-3 text-lg text-left border-2 border-textSecondary rounded-md capitalize font-semibold bg-white tracking-tight text-textSecondary leading-none"
         >
