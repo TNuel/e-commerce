@@ -76,6 +76,16 @@ const SideNav = ({ isOpen, toggleSideNav }) => {
     localStorage.setItem("cartArray", JSON.stringify(updatedArray));
   };
 
+  const decreaseQuantity = (itemId) => {
+    console.log("gets here =>", itemId--);
+    itemId--;
+  };
+
+  const increaseQuantity = (itemId) => {
+    console.log("gets here =>", itemId++);
+    itemId++;
+  };
+
   return (
     <div>
       {isSideNavOpen && (
@@ -135,9 +145,7 @@ const SideNav = ({ isOpen, toggleSideNav }) => {
                         <button
                           className="mr-4 cursor-pointer disabled:text-gray-300"
                           disabled={item.quantity === 1}
-                          onClick={() => {
-                            item.quantity--;
-                          }}
+                          onClick={() => decreaseQuantity(item.quantity)}
                         >
                           -
                         </button>
@@ -145,9 +153,7 @@ const SideNav = ({ isOpen, toggleSideNav }) => {
                         <button
                           className="ml-4 cursor-pointer disabled:text-gray-300"
                           disabled={item.quantity === 10}
-                          onClick={() => {
-                            item.quantity++;
-                          }}
+                          onClick={() => increaseQuantity(item.quantity)}
                         >
                           +
                         </button>

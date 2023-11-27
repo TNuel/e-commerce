@@ -25,7 +25,7 @@ function MainLayout() {
 
 
     return (
-        <div className="w-screen">
+        <div className="">
             <div>
                 <TopNav
                     isOpen={isSideNavOpen}
