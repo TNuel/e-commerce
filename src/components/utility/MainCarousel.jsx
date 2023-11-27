@@ -26,10 +26,10 @@ const MainCarousel = ({ slides }) => {
         style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
       ></div>
       <div className="absolute z-1 inset-0 bg-neutral/25"></div>
-      <div className="absolute w-full top-1/2 transform -translate-y-1/2">
+      <div className="absolute w-full flex justify-center bottom-0 transform -translate-y-1/2">
         <div
           onClick={goToPrevious}
-          className="absolute z-99 left-0 text-4xl text-white cursor-pointer"
+          className=" z-99 text-4xl text-white cursor-pointer"
         >
           <svg
             width="32"
@@ -46,7 +46,7 @@ const MainCarousel = ({ slides }) => {
         </div>
         <div
           onClick={goToNext}
-          className="absolute z-99 right-0 text-4xl text-white cursor-pointer"
+          className=" z-99 text-4xl text-white cursor-pointer"
         >
           <svg
             width="32"
